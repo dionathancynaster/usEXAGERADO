@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosso Cantinho 💕</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+      color: #333;
+      text-align: center;
+    }
+    header {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff4d6d;
+    }
+    #contador {
+      font-size: 1.5em;
+      margin: 10px 0 20px;
+    }
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .galeria img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+    .timeline {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      margin: 40px auto;
+      width: 80%;
+      max-width: 800px;
+    }
+    .evento {
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+    footer {
+      margin-top: 30px;
+      padding: 15px;
+      font-size: 1.2em;
+      background: rgba(255, 255, 255, 0.7);
+    }
+    audio {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💖 Nosso Amor 💖</h1>
+    <p id="contador"></p>
+    <p>"Cada dia contigo é um presente ✨"</p>
+    
+    <!-- Música de fundo (coloque seu arquivo ou link aqui) -->
+    <audio controls autoplay loop>
+      <source src="musica.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
+  </header>
+
+  <section class="galeria">
+    <img src="foto1.jpg" alt="nós dois">
+    <img src="foto2.jpg" alt="momentos felizes">
+    <img src="foto3.jpg" alt="viagem juntos">
+  </section>
+
+  <section class="timeline">
+    <h2>Nossa História 📅</h2>
+    <div class="evento">💘 10/05/2023 - O dia que tudo começou</div>
+    <div class="evento">🌹 20/06/2023 - Primeiro encontro especial</div>
+    <div class="evento">✈️ 15/09/2023 - Nossa primeira viagem</div>
+    <div class="evento">🎂 03/01/2024 - Seu aniversário juntos</div>
+    <div class="evento">✨ ... e muito mais por vir!</div>
+  </section>
+
+  <footer>
+    Te amo para sempre 💕
+  </footer>
+
+  <script>
+    // Defina aqui a data do início do namoro
+    const dataInicio = new Date("2023-05-10"); // exemplo: 10 de maio de 2023
+    const hoje = new Date();
+    const diff = hoje - dataInicio;
+    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById("contador").innerText =
+      `Estamos juntos há ${dias} dias 💕`;
+  </script>
+</body>
+</html>
