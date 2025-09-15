@@ -1,107 +1,116 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Nosso Cantinho 💕</title>
+  <title>Nosso Amor ❤️</title>
   <style>
     body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
       margin: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
-      color: #333;
+      color: #fff;
       text-align: center;
-    }
-    header {
       padding: 20px;
     }
     h1 {
-      font-size: 2.5em;
-      color: #ff4d6d;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
-    #contador {
-      font-size: 1.5em;
-      margin: 10px 0 20px;
+    .contador {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+    .diasTotais {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      color: #ffeedd;
+    }
+    .spotify {
+      margin: 25px 0;
     }
     .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 15px;
-      padding: 20px;
+      justify-content: center;
+      margin-top: 20px;
     }
     .galeria img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
     .galeria img:hover {
       transform: scale(1.05);
     }
-    .timeline {
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 20px;
-      margin: 40px auto;
-      width: 80%;
-      max-width: 800px;
-    }
-    .evento {
-      margin: 20px 0;
-      font-size: 1.2em;
-    }
-    footer {
-      margin-top: 30px;
-      padding: 15px;
-      font-size: 1.2em;
-      background: rgba(255, 255, 255, 0.7);
-    }
-    audio {
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>💖 Nosso Amor 💖</h1>
-    <p id="contador"></p>
-    <p>"Cada dia contigo é um presente ✨"</p>
-    
-    <!-- Música de fundo (coloque seu arquivo ou link aqui) -->
-    <audio controls autoplay loop>
-      <source src="musica.mp3" type="audio/mpeg">
-      Seu navegador não suporta áudio.
-    </audio>
-  </header>
+  <h1>❤️ Estamos juntos há ❤️</h1>
+  <div class="contador" id="detalhado"></div>
+  <div class="diasTotais" id="diasTotais"></div>
 
-  <section class="galeria">
-    <img src="foto1.png" alt="❤️">
-    <img src="foto2.png" alt="❤️">
-    <img src="foto3.png" alt="❤️">
-  </section>
+  <!-- Spotify embed -->
+  <div class="spotify">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/intl-pt/track/4d0DpU7Odiv0ztvX2GxJlk?si=d4b9f6bd66e342bc" 
+      width="300" height="80" frameborder="0" allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </div>
 
-  <section class="timeline">
-    <h2>Nossa História 📅</h2>
-    <div class="evento">💘 25/04/2025 - O dia que tudo começou</div>
-    <div class="evento">🌹 12/06/2025 - Primeiro encontro especial</div>
-    <div class="evento">✈️ ... - Nossa primeira viagem</div>
-    <div class="evento">✨ ... e muito mais por vir!</div>
-  </section>
-
-  <footer>
-    Te amo para sempre 💕
-  </footer>
+  <!-- Galeria de fotos -->
+  <div class="galeria">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+  </div>
 
   <script>
-    // Defina aqui a data do início do namoro
-    const dataInicio = new Date("2025-04-25"); // exemplo: 10 de maio de 2023
-    const hoje = new Date();
-    const diff = hoje - dataInicio;
-    const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById("contador").innerText =
-      `Estamos juntos há ${dias} dias 💕`;
+    // Coloque a data do início do namoro aqui:
+    const inicio = new Date("2024-04-25T00:02:37"); 
+
+    function atualizarContador() {
+      const agora = new Date();
+
+      let anos = agora.getFullYear() - inicio.getFullYear();
+      let meses = agora.getMonth() - inicio.getMonth();
+      let dias = agora.getDate() - inicio.getDate();
+      let horas = agora.getHours() - inicio.getHours();
+      let minutos = agora.getMinutes() - inicio.getMinutes();
+      let segundos = agora.getSeconds() - inicio.getSeconds();
+
+      // Ajustar negativos
+      if (segundos < 0) { segundos += 60; minutos--; }
+      if (minutos < 0) { minutos += 60; horas--; }
+      if (horas < 0) { horas += 24; dias--; }
+      if (dias < 0) {
+        const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+        dias += mesAnterior;
+        meses--;
+      }
+      if (meses < 0) { meses += 12; anos--; }
+
+      // Total de dias
+      const diffMs = agora - inicio;
+      const totalDias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+      document.getElementById("detalhado").textContent =
+        `${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}m ${segundos}s`;
+
+      document.getElementById("diasTotais").textContent =
+        `No total: ${totalDias} dias juntos 💕`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarContador();
   </script>
 </body>
 </html>
-
-
-
